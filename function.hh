@@ -262,8 +262,6 @@ getSegmentConfiguration(std::array<std::string, 10> const& numbers) {
     mappedNumbers[9] = std::string() + configuration[0] + configuration[1] + configuration[2] +
                        configuration[3] + configuration[5] + configuration[6];
 
-    // std::cout << configuration << std::endl;
-
     return mappedNumbers;
 }
 
@@ -324,6 +322,7 @@ uint64_t getPosition(std::vector<uint32_t> const& crabs) {
     return minimumSum;
 }
 
+// wrong
 uint64_t getGeneration(std::vector<uint8_t>& generation, uint32_t days) {
     std::vector<uint32_t> bornAt(days, 0);
     for (auto& g : generation) {

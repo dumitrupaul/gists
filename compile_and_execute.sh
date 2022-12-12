@@ -1,16 +1,17 @@
 #!/bin/bash
 
 function build {
-    if ninja -C build ; then
-        cd build
-        ./demo
+    if ninja -C "$1/build" ; then
+        cd "$1/build"
+        printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+        ./$2
     fi
 }
 
-if [[ -d build ]]
+if [[ -d "$1/build" ]]
 then
-    build
+    build $1 $2
 else
-    meson build
-    build
+    meson "$1/build"
+    build $1 $2
 fi
