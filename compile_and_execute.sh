@@ -12,6 +12,8 @@ if [[ -d "$1/build" ]]
 then
     build $1 $2
 else
-    meson "$1/build"
+    pushd $1 > /dev/null
+        meson build
+    popd > /dev/null
     build $1 $2
 fi
