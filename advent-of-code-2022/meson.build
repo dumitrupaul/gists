@@ -11,7 +11,8 @@ progs = [['day1', ['day1.cc']],
          ['day10', ['day10.cc']],
          ['day11', ['day11.cc']],
          ['day12', ['day12.cc']],
-         ['day13', ['day13.cc']]]
+         ['day13', ['day13.cc']],
+         ['day14', ['day14.cc']]]
 
 foreach p : progs
   exe = executable(p[0], p[1])
