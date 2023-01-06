@@ -138,13 +138,6 @@ static stringstream prettyPrint(vector<vector<uint32_t>> const& x) {
 }
 
 static bool isRightMove(string const& input, size_t pos) {
-    // string s;
-    // if (input[pos] == '>') {
-    //     s = "right";
-    // } else {
-    //     s = "left";
-    // }
-    // cout << "checked pos: " << pos << "\t" << s << "\n";
     return input[pos] == '>';
 }
 
@@ -170,14 +163,10 @@ static bool doesThePatternRepeat(vector<vector<uint32_t>> const& field, size_t& 
     }
 
     size_t maximalSubstringLength(field.size() / 2);
-    // cout << "maximalSubstringLength : " << maximalSubstringLength << endl;
 
     for (size_t length = maximalSubstringLength; length > 3; length--) {
         bool repeat(true);
-        // cout << "\t" << length << endl;
         for (int i = field.size() - 1; i >= field.size() - length; i--) {
-            // cout << "\t\t"
-            //      << "comparing line: " << i << " with: " << i - length << endl;
             if (field[i] != field[i - length]) {
                 repeat = false;
                 break;
@@ -185,7 +174,6 @@ static bool doesThePatternRepeat(vector<vector<uint32_t>> const& field, size_t& 
         }
         if (repeat) {
             returnedLength = length;
-            cout << "found cycle length: " << length << endl;
             return true;
         }
     }
@@ -220,7 +208,9 @@ static bool dropARock(vector<vector<uint32_t>>& field,
         moveCounter++;
     }
 
-    // this is ew
+    // this is a nasty performance hit
+    // quick hotfix for reversing unwanted moves over a certain height
+    // this is needed since we have to calculate how many stones drop per cycle (stonesPerCycle)
     vector<vector<uint32_t>> tempField(field);
     setRockInField(tempField, currentRock, currentLine);
     removeEmptyLines(tempField);
@@ -256,40 +246,29 @@ int main() {
 
     uint64_t savedHeight(field.size());
     uint64_t previousCounter(counter);
-    cout << "savedHeight: " << savedHeight << endl;
+    uint64_t previousMoveCounter(moveCounter);
 
+    // doing another cycle to figure out stones/cycle
+    // this could be done many other ways
     bool limitReached(false);
     while (!limitReached && field.size() <= savedHeight + cycleLength) {
         limitReached =
             dropARock(field, counter, moveCounter, inputString, savedHeight + cycleLength);
     }
-    cout << "field size: " << field.size() << endl;
-
-    // cout << prettyPrint(field).str() << endl;
 
     uint64_t stonesPerCycle(counter - previousCounter);
-    cout << "stonesPerCycle " << stonesPerCycle << "\n";
-
     uint64_t alreadyFallenStones(counter);
-
-    cout << "alreadyFallenStones " << alreadyFallenStones << "\n";
     uint64_t remainingStones(1000000000000 - alreadyFallenStones);
-    cout << "remainingStones " << remainingStones << "\n";
-
     uint64_t fullCyclesLeft = remainingStones / stonesPerCycle;
-
     uint64_t remainingDrops = remainingStones % stonesPerCycle;
-
-    cout << "remainingDrops: " << remainingDrops << "\n";
 
     uint64_t newCounter(0);
     while (newCounter < remainingDrops) {
-        dropARock(field, counter, moveCounter, inputString);
+        dropARock(field, previousCounter, previousMoveCounter, inputString);
         newCounter++;
     }
 
     uint64_t currentHeight(field.size());
-    cout << "last height: " << currentHeight << endl;
     cout << fullCyclesLeft * cycleLength + currentHeight << "\n";
     return EXIT_SUCCESS;
 }
