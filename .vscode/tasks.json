@@ -1,0 +1,58 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "options": {
+        "env": {
+            "ADVENT_OF_CODE_2023": "advent-of-code-2023"
+        }
+    },
+    "tasks": [
+        {
+            "label": "advent of code 2023-add new day",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "mkdir -p $ADVENT_OF_CODE_2023/input &&",
+                    "touch $ADVENT_OF_CODE_2023/input/day${input:dayID}.in &&",
+                    "cp day0.cc $ADVENT_OF_CODE_2023/day${input:dayID}.cc"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2023-day1",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2023/build $ADVENT_OF_CODE_2023 &&",
+                    "ninja -C $ADVENT_OF_CODE_2023/build &&",
+                    "./$ADVENT_OF_CODE_2023/build/day1"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2023-day2",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2023/build $ADVENT_OF_CODE_2023 &&",
+                    "ninja -C $ADVENT_OF_CODE_2023/build &&",
+                    "./$ADVENT_OF_CODE_2023/build/day2"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+    ],
+    "inputs": [
+        {
+            "id": "dayID",
+            "type": "promptString",
+            "description": "Day number to create the input file:"
+        }
+    ]
+}

@@ -4,5 +4,6 @@ build
 advent-of-code-2022/build
 input/
 advent-of-code-2022/input
-.vscode
 .cache/
+advent-of-code-2023/build
+advent-of-code-2023/input

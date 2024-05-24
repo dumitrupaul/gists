@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <any>
 #include <array>
 #include <boost/dynamic_bitset.hpp>
 #include <chrono>
@@ -8,6 +9,24 @@
 #include <numeric>
 #include <unordered_map>
 #include <vector>
+
+struct Log {
+    template <class... A>
+    static void log(A&&... a) {
+        log_impl<sizeof...(A)>({std::any(std::forward<A>(a))...});
+    }
+
+private:
+    template <std::size_t N>
+    static void log_impl(std::array<std::any, N> v) {
+        for (auto&& i : v) {
+            std::cout << std::any_cast<int>(i) << "\n";
+        }
+    }
+    template <class... A>
+    static void variadic_log(A&&... a) {
+    }
+};
 
 std::vector<std::pair<uint8_t, uint8_t>>
 getLowestPoints(std::vector<std::vector<uint8_t>> const& digits) {

@@ -78,7 +78,7 @@ static void setNeighbours(vector<Cube>& cubes) {
 }
 
 static vector<vector<vector<bool>>> get3Dmap(vector<Cube> const& cubes) {
-    size_t maxX(0), maxY(0), maxZ(0);
+    int32_t maxX(0), maxY(0), maxZ(0);
     for (auto const& c : cubes) {
         if (c.x_ > maxX)
             maxX = c.x_;
@@ -154,9 +154,9 @@ static uint32_t getSurroundedCubesUnconnectedSides(vector<vector<vector<bool>>>&
     return getUnconnectedSides(surroundedCubes);
 }
 
-static stringstream prettyPrint(vector<vector<vector<bool>>> const& mapped) {
+[[maybe_unused]] static stringstream prettyPrint(vector<vector<vector<bool>>> const& cubeMap) {
     stringstream s;
-    for (auto const& z : mapped) {
+    for (auto const& z : cubeMap) {
         for (auto const& y : z) {
             for (auto const& x : y) {
                 if (x) {
