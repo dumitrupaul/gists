@@ -47,6 +47,58 @@
             "dependsOn": [],
             "problemMatcher": []
         },
+        {
+            "label": "advent of code 2023-day3",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2023/build $ADVENT_OF_CODE_2023 &&",
+                    "ninja -C $ADVENT_OF_CODE_2023/build &&",
+                    "./$ADVENT_OF_CODE_2023/build/day3"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2023-day4",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2023/build $ADVENT_OF_CODE_2023 &&",
+                    "ninja -C $ADVENT_OF_CODE_2023/build &&",
+                    "./$ADVENT_OF_CODE_2023/build/day4"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2023-day5",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2023/build $ADVENT_OF_CODE_2023 &&",
+                    "ninja -C $ADVENT_OF_CODE_2023/build &&",
+                    "./$ADVENT_OF_CODE_2023/build/day5"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2023-day6",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2023/build $ADVENT_OF_CODE_2023 &&",
+                    "ninja -C $ADVENT_OF_CODE_2023/build &&",
+                    "./$ADVENT_OF_CODE_2023/build/day6"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
     ],
     "inputs": [
         {
