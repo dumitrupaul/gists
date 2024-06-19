@@ -1,6 +1,4 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "options": {
         "env": {
@@ -15,7 +13,8 @@
                 "command": [
                     "mkdir -p $ADVENT_OF_CODE_2023/input &&",
                     "touch $ADVENT_OF_CODE_2023/input/day${input:dayID}.in &&",
-                    "cp day0.cc $ADVENT_OF_CODE_2023/day${input:dayID}.cc"
+                    "cp day0.cc $ADVENT_OF_CODE_2023/day${input:dayID}.cc &&",
+                    "./add_tasks.sh ${input:dayID}"
                 ]
             },
             "dependsOn": [],
@@ -99,6 +98,45 @@
             "dependsOn": [],
             "problemMatcher": []
         },
+        {
+            "label": "advent of code 2023-day7",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2023/build $ADVENT_OF_CODE_2023 &&",
+                    "ninja -C $ADVENT_OF_CODE_2023/build &&",
+                    "./$ADVENT_OF_CODE_2023/build/day7"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2023-day8",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2023/build $ADVENT_OF_CODE_2023 &&",
+                    "ninja -C $ADVENT_OF_CODE_2023/build &&",
+                    "./$ADVENT_OF_CODE_2023/build/day8"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2023-day9",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2023/build $ADVENT_OF_CODE_2023 &&",
+                    "ninja -C $ADVENT_OF_CODE_2023/build &&",
+                    "./$ADVENT_OF_CODE_2023/build/day9"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        }
     ],
     "inputs": [
         {
