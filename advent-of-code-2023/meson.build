@@ -2,6 +2,7 @@ project('advent-of-code-2023', 'cpp', default_options: ['cpp_std=c++2a'],  licen
 libf = dependency('fmt')
 thread_dep = dependency('threads')
 progs = [['day1', ['day1.cc']],
+         ['day10', ['day10.cc']],
          ['day9', ['day9.cc']],
          ['day2', ['day2.cc']],
          ['day3', ['day3.cc']],

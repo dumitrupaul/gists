@@ -2,7 +2,8 @@
     "version": "2.0.0",
     "options": {
         "env": {
-            "ADVENT_OF_CODE_2023": "advent-of-code-2023"
+            "ADVENT_OF_CODE_2023": "advent-of-code-2023",
+            "ADVENT_OF_CODE_2024": "advent-of-code-2024"
         }
     },
     "tasks": [
@@ -14,6 +15,20 @@
                     "mkdir -p $ADVENT_OF_CODE_2023/input &&",
                     "touch $ADVENT_OF_CODE_2023/input/day${input:dayID}.in &&",
                     "cp day0.cc $ADVENT_OF_CODE_2023/day${input:dayID}.cc &&",
+                    "./add_tasks.sh ${input:dayID}"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2024-add new day",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "mkdir -p $ADVENT_OF_CODE_2024/input &&",
+                    "touch $ADVENT_OF_CODE_2024/input/day${input:dayID}.in &&",
+                    "cp day0.cc $ADVENT_OF_CODE_2024/day${input:dayID}.cc &&",
                     "./add_tasks.sh ${input:dayID}"
                 ]
             },
@@ -132,6 +147,45 @@
                     "meson setup $ADVENT_OF_CODE_2023/build $ADVENT_OF_CODE_2023 &&",
                     "ninja -C $ADVENT_OF_CODE_2023/build &&",
                     "./$ADVENT_OF_CODE_2023/build/day9"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2023-day10",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2023/build $ADVENT_OF_CODE_2023 &&",
+                    "ninja -C $ADVENT_OF_CODE_2023/build &&",
+                    "./$ADVENT_OF_CODE_2023/build/day10"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2024-day1",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2024/build $ADVENT_OF_CODE_2024 &&",
+                    "ninja -C $ADVENT_OF_CODE_2024/build &&",
+                    "./$ADVENT_OF_CODE_2024/build/day1"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2024-day2",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2024/build $ADVENT_OF_CODE_2024 &&",
+                    "ninja -C $ADVENT_OF_CODE_2024/build &&",
+                    "./$ADVENT_OF_CODE_2024/build/day2"
                 ]
             },
             "dependsOn": [],

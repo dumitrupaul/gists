@@ -27,7 +27,7 @@ constexpr const char getDayNumber(const char* path) {
 }
 
 int main() {
-    static string const INPUT_FILE{"advent-of-code-2024/input/day" +
+    static string const INPUT_FILE{"advent-of-code-2023/input/day" +
                                    std::string{getDayNumber(__FILE__)} + ".in"};
     std::fstream inputFile(INPUT_FILE.data(), std::ios_base::in);
     if (!inputFile.is_open()) {

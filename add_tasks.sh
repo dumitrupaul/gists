@@ -7,6 +7,7 @@ if [ -z "$1" ]; then
 fi
 
 # Extract the number from the first argument
+YEAR=2024 # Change default AOC year if needed
 number=$1
 
 # Check if jq is installed
@@ -27,13 +28,13 @@ fi
 # Define the new task as a JSON object
 new_task=$(cat <<EOF
 {
-    "label": "advent of code 2023-day${number}",
+    "label": "advent of code ${YEAR}-day${number}",
     "type": "shell",
     "linux": {
         "command": [
-        "meson setup \$ADVENT_OF_CODE_2023/build \$ADVENT_OF_CODE_2023 &&",
-        "ninja -C \$ADVENT_OF_CODE_2023/build &&",
-        "./\$ADVENT_OF_CODE_2023/build/day${number}"
+        "meson setup \$ADVENT_OF_CODE_${YEAR}/build \$ADVENT_OF_CODE_${YEAR} &&",
+        "ninja -C \$ADVENT_OF_CODE_${YEAR}/build &&",
+        "./\$ADVENT_OF_CODE_${YEAR}/build/day${number}"
         ]
     },
     "dependsOn": [],
@@ -46,7 +47,7 @@ EOF
 jq --indent 4 --argjson new_task "$new_task" '.tasks += [$new_task]' "$tasks_file" > "$tasks_file.tmp" && mv "$tasks_file.tmp" "$tasks_file"
 
 # Path to the meson.build file
-meson_file="advent-of-code-2023/meson.build"
+meson_file="advent-of-code-${YEAR}/meson.build"
 
 # Define the new program entry for meson.build
 new_program="['day${number}', ['day${number}.cc']]"
