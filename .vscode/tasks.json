@@ -190,6 +190,45 @@
             },
             "dependsOn": [],
             "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2024-day3",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2024/build $ADVENT_OF_CODE_2024 &&",
+                    "ninja -C $ADVENT_OF_CODE_2024/build &&",
+                    "./$ADVENT_OF_CODE_2024/build/day3"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2024-day4",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2024/build $ADVENT_OF_CODE_2024 &&",
+                    "ninja -C $ADVENT_OF_CODE_2024/build &&",
+                    "./$ADVENT_OF_CODE_2024/build/day4"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2024-day5",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2024/build $ADVENT_OF_CODE_2024 &&",
+                    "ninja -C $ADVENT_OF_CODE_2024/build &&",
+                    "./$ADVENT_OF_CODE_2024/build/day5"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
         }
     ],
     "inputs": [

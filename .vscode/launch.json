@@ -2,7 +2,7 @@
   "configurations": [
     {
       "name": "(gdb) Launch",
-      "type": "cppdbg",
+      "type": "lldb",
       "request": "launch",
       "program": "${fileDirname}/build/${fileBasenameNoExtension}",
       "args": [],
