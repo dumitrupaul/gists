@@ -8,6 +8,19 @@
     },
     "tasks": [
         {
+            "label": "cpp-gist-BST",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup cpp-gist/build cpp-gist --native-file meson_clang_native.ini &&",
+                    "ninja -C cpp-gist/build &&",
+                    "./cpp-gist/build/bst"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
             "label": "advent of code 2023-add new day",
             "type": "shell",
             "linux": {
@@ -225,6 +238,45 @@
                     "meson setup $ADVENT_OF_CODE_2024/build $ADVENT_OF_CODE_2024 &&",
                     "ninja -C $ADVENT_OF_CODE_2024/build &&",
                     "./$ADVENT_OF_CODE_2024/build/day5"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2024-day6",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2024/build $ADVENT_OF_CODE_2024 --native-file meson_clang_native.ini &&",
+                    "ninja -C $ADVENT_OF_CODE_2024/build &&",
+                    "./$ADVENT_OF_CODE_2024/build/day6"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2024-day7",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2024/build $ADVENT_OF_CODE_2024 --native-file meson_clang_native.ini &&",
+                    "ninja -C $ADVENT_OF_CODE_2024/build &&",
+                    "./$ADVENT_OF_CODE_2024/build/day7"
+                ]
+            },
+            "dependsOn": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "advent of code 2024-day8",
+            "type": "shell",
+            "linux": {
+                "command": [
+                    "meson setup $ADVENT_OF_CODE_2024/build $ADVENT_OF_CODE_2024 &&",
+                    "ninja -C $ADVENT_OF_CODE_2024/build &&",
+                    "./$ADVENT_OF_CODE_2024/build/day8"
                 ]
             },
             "dependsOn": [],

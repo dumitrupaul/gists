@@ -11,6 +11,7 @@
 #include <map>
 #include <sstream>
 #include <string>
+#include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
@@ -112,7 +113,7 @@ int main() {
         if (rules.contains(secondNum)) {
             rules[secondNum].push_back(firstNum);
         } else {
-            rules.insert({secondNum, {static_cast<uint32_t>(firstNum)}});
+            rules.insert({static_cast<uint32_t>(secondNum), {static_cast<uint32_t>(firstNum)}});
         }
     }
 
@@ -136,7 +137,7 @@ int main() {
         }
     }
 
-    fmt::print("{}\n", result);
+    print("{}\n", result);
 
     return EXIT_SUCCESS;
 }

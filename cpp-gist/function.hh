@@ -1,11 +1,11 @@
 #include <algorithm>
 #include <any>
 #include <array>
-#include <boost/dynamic_bitset.hpp>
 #include <chrono>
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include <list>
 #include <numeric>
 #include <unordered_map>
 #include <vector>
@@ -595,81 +595,81 @@ std::vector<std::string> split(std::string s, std::string delimiter) {
     return res;
 }
 
-boost::dynamic_bitset<> filterOxygen(std::vector<boost::dynamic_bitset<>>& report,
-                                     uint32_t startingBitIdx) {
-    if (report.size() == 1) {
-        return report[0];
-    }
-    int32_t averageValue(0);
-    std::vector<boost::dynamic_bitset<>> positiveReport;
-    std::vector<boost::dynamic_bitset<>> negativeReport;
-    for (auto& number : report) {
-        if (number[number.size() - 1 - startingBitIdx]) {
-            averageValue++;
-            positiveReport.push_back(number);
-        } else {
-            averageValue--;
-            negativeReport.push_back(number);
-        }
-    }
-    if (averageValue >= 0) {
-        return filterOxygen(positiveReport, startingBitIdx + 1);
-    } else {
-        return filterOxygen(negativeReport, startingBitIdx + 1);
-    }
-}
+// boost::dynamic_bitset<> filterOxygen(std::vector<boost::dynamic_bitset<>>& report,
+//                                      uint32_t startingBitIdx) {
+//     if (report.size() == 1) {
+//         return report[0];
+//     }
+//     int32_t averageValue(0);
+//     std::vector<boost::dynamic_bitset<>> positiveReport;
+//     std::vector<boost::dynamic_bitset<>> negativeReport;
+//     for (auto& number : report) {
+//         if (number[number.size() - 1 - startingBitIdx]) {
+//             averageValue++;
+//             positiveReport.push_back(number);
+//         } else {
+//             averageValue--;
+//             negativeReport.push_back(number);
+//         }
+//     }
+//     if (averageValue >= 0) {
+//         return filterOxygen(positiveReport, startingBitIdx + 1);
+//     } else {
+//         return filterOxygen(negativeReport, startingBitIdx + 1);
+//     }
+// }
 
-boost::dynamic_bitset<> filterCO(std::vector<boost::dynamic_bitset<>>& report,
-                                 uint32_t startingBitIdx) {
-    if (report.size() == 1) {
-        return report[0];
-    }
-    int32_t averageValue(0);
-    std::vector<boost::dynamic_bitset<>> positiveReport;
-    std::vector<boost::dynamic_bitset<>> negativeReport;
-    for (auto& number : report) {
-        if (number[number.size() - 1 - startingBitIdx]) {
-            averageValue++;
-            positiveReport.push_back(number);
-        } else {
-            averageValue--;
-            negativeReport.push_back(number);
-        }
-    }
-    if (averageValue >= 0) {
-        return filterCO(negativeReport, startingBitIdx + 1);
-    } else {
-        return filterCO(positiveReport, startingBitIdx + 1);
-    }
-}
+// boost::dynamic_bitset<> filterCO(std::vector<boost::dynamic_bitset<>>& report,
+//                                  uint32_t startingBitIdx) {
+//     if (report.size() == 1) {
+//         return report[0];
+//     }
+//     int32_t averageValue(0);
+//     std::vector<boost::dynamic_bitset<>> positiveReport;
+//     std::vector<boost::dynamic_bitset<>> negativeReport;
+//     for (auto& number : report) {
+//         if (number[number.size() - 1 - startingBitIdx]) {
+//             averageValue++;
+//             positiveReport.push_back(number);
+//         } else {
+//             averageValue--;
+//             negativeReport.push_back(number);
+//         }
+//     }
+//     if (averageValue >= 0) {
+//         return filterCO(negativeReport, startingBitIdx + 1);
+//     } else {
+//         return filterCO(positiveReport, startingBitIdx + 1);
+//     }
+// }
 
-boost::dynamic_bitset<> getGammaRate(std::vector<boost::dynamic_bitset<>> const& report) {
-    size_t size = static_cast<int>(report[0].size());
-    std::vector<int32_t> rate(size, 0);
-    for (size_t idx = 0; idx < report.size(); idx++) {
-        for (size_t bitIdx = 0; bitIdx < report[idx].size(); bitIdx++) {
-            if (report[idx][bitIdx]) {
-                rate[bitIdx]++;
-            } else {
-                rate[bitIdx]--;
-            }
-        }
-    }
+// boost::dynamic_bitset<> getGammaRate(std::vector<boost::dynamic_bitset<>> const& report) {
+//     size_t size = static_cast<int>(report[0].size());
+//     std::vector<int32_t> rate(size, 0);
+//     for (size_t idx = 0; idx < report.size(); idx++) {
+//         for (size_t bitIdx = 0; bitIdx < report[idx].size(); bitIdx++) {
+//             if (report[idx][bitIdx]) {
+//                 rate[bitIdx]++;
+//             } else {
+//                 rate[bitIdx]--;
+//             }
+//         }
+//     }
 
-    for (auto c : rate) {
-        std::cout << c << " ";
-    }
-    std::cout << std::endl;
-    boost::dynamic_bitset<> gammaRate(rate.size());
-    for (size_t bitIdx = 0; bitIdx < rate.size(); bitIdx++) {
-        if (rate[bitIdx] < 0) {
-            gammaRate[bitIdx] = false;
-        } else {
-            gammaRate[bitIdx] = true;
-        }
-    }
-    return gammaRate;
-}
+//     for (auto c : rate) {
+//         std::cout << c << " ";
+//     }
+//     std::cout << std::endl;
+//     boost::dynamic_bitset<> gammaRate(rate.size());
+//     for (size_t bitIdx = 0; bitIdx < rate.size(); bitIdx++) {
+//         if (rate[bitIdx] < 0) {
+//             gammaRate[bitIdx] = false;
+//         } else {
+//             gammaRate[bitIdx] = true;
+//         }
+//     }
+//     return gammaRate;
+// }
 
 uint32_t getIncreasedMeasurements(std::vector<uint32_t> const& depths) {
     uint32_t measurements(0);
